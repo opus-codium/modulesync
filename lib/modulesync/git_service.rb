@@ -9,10 +9,12 @@ module ModuleSync
       case type
       when :github
         raise ModuleSync::Error, 'No GitHub token specified to create a pull request' if token.nil?
+
         require 'modulesync/git_service/github'
         ModuleSync::GitService::GitHub.new(token, endpoint)
       when :gitlab
         raise ModuleSync::Error, 'No GitLab token specified to create a merge request' if token.nil?
+
         require 'modulesync/git_service/gitlab'
         ModuleSync::GitService::GitLab.new(token, endpoint)
       else
