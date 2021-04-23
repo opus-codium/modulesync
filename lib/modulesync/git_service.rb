@@ -45,7 +45,7 @@ module ModuleSync
       if ENV['GITLAB_TOKEN'].nil? && ENV['GITHUB_TOKEN'].nil?
         raise ModuleSync::Error, <<~MESSAGE
           Unable to guess Git service type without GITLAB_TOKEN or GITHUB_TOKEN sets.
-          MESSAGE
+        MESSAGE
       end
 
       unless ENV['GITLAB_TOKEN'].nil? || ENV['GITHUB_TOKEN'].nil?
@@ -53,7 +53,7 @@ module ModuleSync
           Unable to guess Git service type with both GITLAB_TOKEN and GITHUB_TOKEN sets.
 
           Please set the wanted one in configuration (ie. add `gitlab:` or `github:` key)
-          MESSAGE
+        MESSAGE
       end
 
       return :github unless ENV['GITHUB_TOKEN'].nil?
@@ -117,7 +117,7 @@ module ModuleSync
       raise MissingCredentialsError, <<~MESSAGE if token.nil?
         A token is require to use services from #{type}:
           Please set environment variable: "#{type.upcase}_TOKEN" or set the token entry in module options.
-        MESSAGE
+      MESSAGE
 
       token
     end
